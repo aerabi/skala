@@ -3,6 +3,8 @@ package ir.angellandros.scala.collection
 import java.util.HashMap
 import scala.collection.JavaConversions._
 import scala.collection.JavaConverters._
+
+import scala.language.implicitConversions
 	
 class PairedIterable[K, V](x: Iterable[(K, V)]) {
 	def reduceByKey(func: (V,V) => V) = {
@@ -22,7 +24,9 @@ class PairedIterable[K, V](x: Iterable[(K, V)]) {
 		
 		"PairedIterable(" + toStringEl(x) + ")"
 	}
-	
+}
+
+object PairedIterable {
 	implicit def iterableToPairedIterable[K, V](x: Iterable[(K, V)]) = { new PairedIterable(x) }
 	implicit def javaHashMapToPairedIterable[K, V](x: HashMap[K, V]) = { new PairedIterable(x.asScala) }
 }
