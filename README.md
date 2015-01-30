@@ -1,6 +1,27 @@
 # skala
 Simple Extensions for Scala
 
+## Build
+There are multiples ways to build the package.
+
+### Scalac
+Scala compiler is the simplest way to build the thing.
+
+```
+$ mkdir classes
+$ cd classes
+$ scalac ../src/main/scala/ir/angellandros/scala/collection/PairedIterable.scala
+$ scalac ../src/main/scala/ir/angellandros/scala/collection/Implicits.scala
+$ scalac ../src/main/scala/ir/angellandros/scala/testing/SUnit.scala
+$ scalac ../src/test/scala/ir/angellandros/scala/collection/PairedIterableTest.scala
+```
+
+And test it using
+
+```
+$ scala ir.angellandros.scala.collection.PairedIterableTest
+```
+
 ## Current Things
 Currently we have implemented two thing:
 
