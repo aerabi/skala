@@ -22,6 +22,26 @@ And test it using
 $ scala ir.angellandros.scala.collection.PairedIterableTest
 ```
 
+### SBT
+Simple Build Tool is the most popular build tool for scala. We respect that. So for compiling the code:
+
+```
+$ sbt compile
+```
+
+And for testing:
+
+```
+$ sbt test:run
+```
+
+SBT respects our own SUnit tests.
+For making a jar out of the project, do:
+
+```
+$ sbt package
+```
+
 ## Current Things
 Currently we have implemented two thing:
 
