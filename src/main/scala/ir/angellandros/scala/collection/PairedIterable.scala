@@ -1,17 +1,17 @@
 package ir.angellandros.scala.collection
 
-import java.util.HashMap
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
-
 import scala.language.implicitConversions
+
+import scala.collection.mutable.HashMap
 	
 class PairedIterable[K, V](x: Iterable[(K, V)]) {
 	def reduceByKey(func: (V,V) => V) = {
-		val map = new HashMap[K, V]
+		val map: HashMap[K, V] = new HashMap[K, V]()
 		x.foreach { pair =>
-			val old = map.get(pair._1)
-			map.put(pair._1, if (old == null) pair._2 else func(old, pair._2))
+			map.get(pair._1) match {
+				case None => map.put(pair._1, pair._2)
+				case Some(thing) => map.put(pair._1, func(thing, pair._2))
+			}
 		}
 		map
 	}
@@ -28,5 +28,5 @@ class PairedIterable[K, V](x: Iterable[(K, V)]) {
 
 object PairedIterable {
 	implicit def iterableToPairedIterable[K, V](x: Iterable[(K, V)]) = { new PairedIterable(x) }
-	implicit def javaHashMapToPairedIterable[K, V](x: HashMap[K, V]) = { new PairedIterable(x.asScala) }
+//	implicit def javaHashMapToPairedIterable[K, V](x: HashMap[K, V]) = { new PairedIterable(x.asScala) }
 }

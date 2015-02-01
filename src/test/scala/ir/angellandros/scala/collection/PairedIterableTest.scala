@@ -11,7 +11,7 @@ object PairedIterableTest {
 		val pi = new PairedIterable(l.map(_ -> 1))
 		
 		tester.assertEquals("PairedIterable((1,1), (1,1), (1,1), (2,1), (2,1), (3,1))", pi.toString, "toString method")
-		tester.assertEquals("{1=3, 2=2, 3=1}", pi.reduceByKey(_+_).toString, "reduceByKey method")
-		tester.assertEquals("{1=3, 2=2, 3=1}", l.map(_ -> 1).reduceByKey(_+_).toString, "implicit reduceByKey method")
+		tester.assertEquals("Map(2 -> 2, 1 -> 3, 3 -> 1)", pi.reduceByKey(_+_).toString, "reduceByKey method")
+		tester.assertEquals("Map(2 -> 2, 1 -> 3, 3 -> 1)", l.map(_ -> 1).reduceByKey(_+_).toString, "implicit reduceByKey method")
     }
 }
