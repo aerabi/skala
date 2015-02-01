@@ -49,7 +49,7 @@ Currently we have implemented two thing:
 Actually, `ir.angellandros.scala.collection.PairedIterable`. The main reason for such a data structure is to have `reduceByKey`.
 You can now do this:
 
-```
+```scala
 import ir.angellandros.scala.collection.Implicits._
 val l = List(1,1,1,2,2,3)
 l.map(_ -> 1).reduceByKey(_+_)
