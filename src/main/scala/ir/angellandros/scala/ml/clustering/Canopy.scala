@@ -11,14 +11,13 @@ class CanopyDriver(t1: Double, t2: Double) {
 	def run[K](vs: Iterable[KeyedVector[K]], f: (KeyedVector[K], KeyedVector[K]) => Double): HashMap[KeyedVector[K], KeyedVector[K]] = {
 		val map = new HashMap[KeyedVector[K], KeyedVector[K]] // map from data to clusters
 		val set: Set[KeyedVector[K]] = Set() // the set
-		val par = vs.par
 		var count = 0
 		for(v <- vs) set += v
 		for(v <- vs) {
 			count += 1
 			print(count + " ")
 			if(set.contains(v)) {
-				par
+				vs
 					.map{ x => (x, f(x, v)) }
 					.foreach { case (x, d) =>
 						if(d < t1) map.put(x, v)

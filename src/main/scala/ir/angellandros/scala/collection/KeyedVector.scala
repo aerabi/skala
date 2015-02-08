@@ -2,12 +2,14 @@ package ir.angellandros.scala.collection
 
 import scala.collection.mutable.HashMap
 	
-class KeyedVector[K](m: HashMap[K, Double]) {
+class KeyedVector[K](_id: String, m: HashMap[K, Double]) {
 	def get(key: K): Option[Double] = m.get(key)
 	
 	val keySet = m.keySet
 	
 	val toMap = m
+
+	val id = _id
 
 	override def toString(): String ={
 		def toStringEl(y: Iterable[(K, Double)]): String = {
@@ -15,6 +17,6 @@ class KeyedVector[K](m: HashMap[K, Double]) {
 			else y.head.toString + ", " + toStringEl(y.tail)
 		}
 		
-		"KeyedVector(" + toStringEl(m) + ")"
+		"KeyedVector(" + _id + ": " + toStringEl(m) + ")"
 	}
 }
