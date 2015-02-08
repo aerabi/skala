@@ -14,7 +14,7 @@ object CanopyReutersTest {
 		val stopWords = Source.fromFile("src/main/resources/stopwords.txt").getLines.toSet
 	
 		// loading Reuters dataset
-		val dir = new File("B:/Documents/Dev/DataSets/Reuters/C50test")
+		val dir = new File("/home/m.aerabi/Dev/DataSets/Reuters/C50/C50test")
 		val paths = dir.listFiles().flatMap(x => x.listFiles().map(_.getPath()))
 		val data = paths.map(x => Source.fromFile(x).mkString)
 		println("Loaded " + data.length + " files")
@@ -45,10 +45,10 @@ object CanopyReutersTest {
 		val canopy = new CanopyDriver(0.95, 0.5)
 		println("Running canopy")
 		
-		val then = System.currentTimeMillis
-		val results = canopy.mergedRun(vectors, KeyedVectors.cosineDist[String])
-		val now = System.currentTimeMillis
-		println("Done in " + (now - then) + " milliseconds!")
+		val then1 = System.currentTimeMillis
+		val results = canopy.mergedRun(vectors.take(1000), KeyedVectors.cosineDist[String])
+		val now1 = System.currentTimeMillis
+		println("Done in " + (now1 - then1) + " milliseconds!")
 		
 		val centers = results.map(_._2).toSet
 		println(centers)
