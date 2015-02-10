@@ -63,7 +63,7 @@ val i9 = KeyedVectors.cosineDist(v1, v2)
 ```
 
 ### Canopy Clustering Algorithm
-Canopy algorithm on pure scala. There are two implementations for canopy algorithm. First, the simple implementation with $O(n^2)$, and the other, the merged implementation with $O(n \sqrt{n})$ running time.
+Canopy algorithm on pure scala. There are two implementations for canopy algorithm. First, the simple implementation with ![equation](http://www.sciweavers.org/tex2img.php?eq=O(n^2)&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0), and the other, the merged implementation with \(O(n \sqrt{n})\) running time.
 
 ```scala
 val canopy = new CanopyDriver(0.95, 0.5)
